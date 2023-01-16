@@ -1,0 +1,83 @@
+/* variables */
+$desktop-width: 70rem;
+:root {
+  --desktop-width: $desktop-width;
+}
+
+/* typography */
+:root {
+  font-family: system-ui;
+}
+a {
+	text-decoration: none;
+	color: Highlight;
+}
+a:where(:focus,:hover) {
+	text-decoration: underline;
+}
+
+/* navigation */
+nav[data-type="desktop"] {
+  display: none;
+}
+
+@media screen and (min-width: $desktop-width) {
+  nav[data-type="desktop"] {
+    display: unset;
+  }
+  details[data-type="mobile"] {
+    display: none;
+  }
+}
+
+.skip-to-content {
+	background-color: var(--layer0);
+	padding: 1rem;
+	top: -100%;
+  left: -100%;
+  position: absolute;
+}
+
+.skip-to-content:focus {
+	left: 0;
+	top: 0;
+}
+
+/* sticky footer */
+body {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 100%;
+	min-height: 100dvh;
+}
+
+/* layout */
+@media screen and (min-width: $desktop-width) {
+	.container {
+		display: grid;
+		grid-auto-flow: row;
+		grid-template-columns: 25% 75%;
+		align-items: start;
+		position: relative;
+		max-width: 1200px;
+		margin-inline: auto;
+	}
+	nav[data-type=desktop] {
+		position: sticky;
+		top: 0;
+		overflow-y: auto;
+		max-height: 100dvh;
+		padding: 1rem;
+	}
+}
+body {
+	background-color: var(--layer1);
+}
+main {
+	background-color: var(--layer0);
+	padding: 1rem;
+	margin: 1rem;
+	border-radius: 1rem;
+	filter: drop-shadow(0 0 1rem var(--color2));
+	color: var(--color1);
+}
